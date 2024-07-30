@@ -28,7 +28,11 @@ export const blogPost = defineType({
       to: [{type: 'blogAuthor'}],
     }),    
     defineField({
-      name: 'image',
+      name: 'thumbnail',
+      type: 'image',
+    }), 
+    defineField({
+      name: 'mainimage',
       type: 'image',
     }),
     defineField({

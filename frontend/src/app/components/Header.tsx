@@ -16,7 +16,7 @@ const Header: React.FC = () => {
     };
 
     return (
-        <header className={`absolute w-screen mx-auto p-8 ${isNavigationPage ? 'active' : ''}`}>
+        <header className={`absolute w-full z-10 p-8 ${isNavigationPage ? 'active' : ''}`}>
             <div className="grid grid-cols-2">
                 <div className="flex justify-start">
                     <Link href="/">
@@ -28,7 +28,7 @@ const Header: React.FC = () => {
                     </Link>
                 </div>
                 <div className="flex justify-end items-center">
-                    <Link href="/navigation" className="p-8" onClick={handleMenuClick}>
+                    <Link href="/navigation" className="p-16" onClick={handleMenuClick}>
                         <div className="menu-button"></div>
                     </Link>
                 </div>

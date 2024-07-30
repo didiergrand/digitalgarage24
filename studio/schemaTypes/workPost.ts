@@ -10,6 +10,10 @@ export const workPost = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'url',
+      type: 'url',
+    }),
+    defineField({
       name: 'slug',
       type: 'slug',
       options: {source: 'title'},

@@ -47,7 +47,7 @@ export default async function workPostPage({
 
 
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid sm:grid-cols-2">
       <div className="p-8 pt-48">
         <div className="mb-4">
           <Link href="/work">← Back to work</Link>
@@ -56,7 +56,7 @@ export default async function workPostPage({
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-4">
               {workCategory ? (
-                <div className="inline-block rounded-lg bg-dg-100 px-3 py-1 text-sm dark:bg-dg-200 capitalize">
+                <div className="inline-block rounded-md bg-dg-100 px-3 py-1 text-sm dark:bg-dg-200 capitalize">
                   {workCategory.name}
                 </div>
               ) : null}
