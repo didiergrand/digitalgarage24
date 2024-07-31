@@ -5,6 +5,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client, sanityFetch } from "@/sanity/client";
 import Link from "next/link";
+import {dataset, projectId} from '@/sanity/env'
 import Image from "next/image";
 
 const workPost_QUERY = `*[
@@ -16,11 +17,12 @@ const workPost_QUERY = `*[
   workAuthor->
 }`;
 
-const { projectId, dataset } = client.config();
-export const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
-    ? imageUrlBuilder({ projectId, dataset }).image(source)
-    : null;
+const builder = imageUrlBuilder({ projectId, dataset })
+
+function urlFor(source: SanityImageSource) {
+  return builder.image(source)
+}
+
 
 export default async function workPostPage({
   params,
@@ -96,8 +98,8 @@ export default async function workPostPage({
             src={workPostImageUrl || "https://via.placeholder.com/900x1800"}
             alt={title || "workPost"}
             className="mx-auto overflow-hidden object-cover object-center sm:w-full"
-            height="600"
-            width="1200"
+            width={900}
+            height={1800}
           />
         </div>
     </div>

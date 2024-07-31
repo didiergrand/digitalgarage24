@@ -1,7 +1,9 @@
 import { SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client, sanityFetch } from "@/sanity/client";
 import { PortableText } from '@portabletext/react'
+import {dataset, projectId} from '@/sanity/env'
 import Image from "next/image";
 
 const work_QUERY = `*[_type == "work"] | order(title asc) {
@@ -17,11 +19,12 @@ const works_QUERY = `*[_type == "workPost"]{
   thumbnail
 }`;
 
-const { projectId, dataset } = client.config();
-export const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
-    ? imageUrlBuilder({ projectId, dataset }).image(source)
-    : null;
+const builder = imageUrlBuilder({ projectId, dataset })
+
+function urlFor(source: SanityImageSource) {
+  return builder.image(source)
+}
+
 
 export default async function WorkListPage() {
   const work = await sanityFetch<SanityDocument[]>({
@@ -56,9 +59,6 @@ export default async function WorkListPage() {
                 src={workImageUrl}
                 alt={work.title}
                 className="h-48 p-4 object-contain bg-white rounded-md"
-                height="300"
-                width="600"
-
               />
               <div className="">
                 <h2 className="text-2xl mb-2">{work.title}</h2>

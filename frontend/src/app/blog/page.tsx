@@ -1,8 +1,11 @@
 import { SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
 import { client, sanityFetch } from "@/sanity/client";
 import Link from "next/link";
 import Image from "next/image";
+import {dataset, projectId} from '@/sanity/env'
 
 const blogs_QUERY = `*[_type == "blogPost"]{
   _id,
@@ -11,11 +14,13 @@ const blogs_QUERY = `*[_type == "blogPost"]{
   thumbnail
 }`;
 
-const { projectId, dataset } = client.config();
-export const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
-    ? imageUrlBuilder({ projectId, dataset }).image(source)
-    : null;
+
+
+const builder = imageUrlBuilder({ projectId, dataset })
+
+function urlFor(source: SanityImageSource) {
+  return builder.image(source)
+}
 
 export default async function WorkListPage() {
   const blogs = await sanityFetch<SanityDocument[]>({

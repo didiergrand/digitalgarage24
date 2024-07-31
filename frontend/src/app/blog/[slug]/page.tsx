@@ -6,6 +6,7 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client, sanityFetch } from "@/sanity/client";
 import Link from "next/link";
 import Image from "next/image";
+import {dataset, projectId} from '@/sanity/env'
 
 const blogPost_QUERY = `*[
     _type == "blogPost" &&
@@ -16,11 +17,14 @@ const blogPost_QUERY = `*[
   blogAuthor->
 }`;
 
-const { projectId, dataset } = client.config();
-export const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
-    ? imageUrlBuilder({ projectId, dataset }).image(source)
-    : null;
+const builder = imageUrlBuilder({ projectId, dataset })
+
+function urlFor(source: SanityImageSource) {
+  return builder.image(source)
+}
+
+
+
 
 export default async function blogPostPage({
   params,
@@ -39,9 +43,9 @@ export default async function blogPostPage({
     blogCategory,
     blogAuthor,
   } = blogPost;
-  const blogPostImageUrl = mainimage
-    ? urlFor(mainimage)?.url()
-    : null;
+  const blogPostImageUrl: string = mainimage
+      ? urlFor(mainimage)?.url() ?? "https://via.placeholder.com/900x1800"
+      : "https://via.placeholder.com/900x1800";
   const blogPostDate = publishedAt ? new Date(publishedAt).toLocaleDateString() : null;
   const blogPostTime = publishedAt ? new Date(publishedAt).toLocaleTimeString() : null;
 

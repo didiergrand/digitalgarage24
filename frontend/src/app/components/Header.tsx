@@ -22,9 +22,9 @@ const Header: React.FC = () => {
                 <div className="flex justify-start">
                     <Link href="/">
                         {isNavigationPage ? (
-                            <Image src="/Digitalgarage-DidierGrand-Logo-light.svg" alt="Logo" width={150} height={150} />
+                            <Image src="/Digitalgarage-DidierGrand-Logo-light.svg" alt="Logo" width={125} height={125} />
                         ) : (
-                            <Image src="/Digitalgarage-DidierGrand-Logo.svg" alt="Logo" width={150} height={150}  />
+                            <Image src="/Digitalgarage-DidierGrand-Logo.svg" alt="Logo" width={125} height={125}  />
                         )}
                     </Link>
                 </div>

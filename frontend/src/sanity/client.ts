@@ -1,10 +1,12 @@
 import "server-only";
 
 import { createClient, type QueryParams } from "next-sanity";
+import {dataset, projectId} from './env'
+
 
 export const client = createClient({
-  projectId: "z40tgxng",
-  dataset: "production",
+  projectId,
+  dataset,
   apiVersion: "2024-01-01",
   useCdn: false,
 });
