@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Header: React.FC = () => {
     const pathname = usePathname(); // Utiliser usePathname 
@@ -21,9 +22,9 @@ const Header: React.FC = () => {
                 <div className="flex justify-start">
                     <Link href="/">
                         {isNavigationPage ? (
-                            <img src="/Digitalgarage-DidierGrand-Logo-light.svg" alt="Logo" />
+                            <Image src="/Digitalgarage-DidierGrand-Logo-light.svg" alt="Logo" width={150} height={150} />
                         ) : (
-                            <img src="/Digitalgarage-DidierGrand-Logo.svg" alt="Logo" />
+                            <Image src="/Digitalgarage-DidierGrand-Logo.svg" alt="Logo" width={150} height={150}  />
                         )}
                     </Link>
                 </div>
