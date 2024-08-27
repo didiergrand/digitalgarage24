@@ -28,8 +28,9 @@ const getAboutPage = async (): Promise<AboutPageType | null> => {
     "image1": image1.asset->url
   }`;
   const aboutPage = await sanityFetch({ query });
-  return aboutPage;
-};
+  return aboutPage as AboutPageType | null;
+}
+
 
 const AboutPage = async () => {
   const aboutPage = await getAboutPage();
@@ -63,7 +64,7 @@ const AboutPage = async () => {
         {aboutPage.image1 && (
           <Image
             src={aboutPage.image1}
-            alt={aboutPage.title}
+            alt={aboutPage.title}            
             fill
             style={{ objectFit: "cover" }}
             className="object-cover h-screen w-full"
