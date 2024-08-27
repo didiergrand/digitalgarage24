@@ -99,7 +99,7 @@ p{
 .menu-button::before,
 .menu-button::after {
   display: block;
-  background-color: #576D55;
+  background-color: #AEBDAC;
   position: absolute;
   height: 8px;
   width: 50px;

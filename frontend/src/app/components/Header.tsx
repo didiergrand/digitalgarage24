@@ -29,7 +29,7 @@ const Header: React.FC = () => {
                     </Link>
                 </div>
                 <div className="flex justify-end items-center">
-                    <Link href="/navigation" className="p-16" onClick={handleMenuClick}>
+                    <Link href="/navigation" className="fixed p-16" onClick={handleMenuClick}>
                         <div className="menu-button"></div>
                     </Link>
                 </div>
