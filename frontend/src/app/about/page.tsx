@@ -1,7 +1,17 @@
 import { sanityFetch } from "@/sanity/client";
 import Image from "next/image";
-import { PortableText } from '@portabletext/react';
 
+interface AboutPageType {
+  _id: string;
+  title: string;
+  pageBuilder: Array<{
+    _type: string;
+    heading?: string;
+    tagline?: string;
+    excerpt?: string;
+  }>;
+  image1?: string;
+}
 async function getAboutPage() {
   const query = `*[_type == "page" && slug.current == "about"][0]{
     _id,
@@ -11,31 +21,8 @@ async function getAboutPage() {
         _type,
         heading,
         tagline,
-        excerpt,
-        image
+        excerpt
       },
-      _type == 'hero' => {
-        _type,
-        title,
-        subtitle,
-      },
-      _type == 'gallery' => {
-        _type,
-        images[] {
-          asset->{
-            _id,
-            url
-          }
-        }
-      },
-      _type == 'form' => {
-        _type,
-        formId,
-      },
-      _type == 'video' => {
-        _type,
-        videoUrl,
-      }
     },
     "image1": image1.asset->url
   }`;
@@ -64,15 +51,6 @@ const AboutPage = async () => {
                   <p>
                     {block.excerpt}
                   </p>
-                  {block.illustration && (
-                    <Image
-                      src={block.illustration.asset.url}
-                      alt="Illustration"
-                      width={500}
-                      height={300}
-                      className="object-cover"
-                    />
-                  )}
                 </div>
               );
             case 'hero':
