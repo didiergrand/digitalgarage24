@@ -12,7 +12,8 @@ interface AboutPageType {
   }>;
   image1?: string;
 }
-async function getAboutPage() {
+
+const getAboutPage = async (): Promise<AboutPageType | null> => {
   const query = `*[_type == "page" && slug.current == "about"][0]{
     _id,
     title,
@@ -28,8 +29,7 @@ async function getAboutPage() {
   }`;
   const aboutPage = await sanityFetch({ query });
   return aboutPage;
-}
-
+};
 
 const AboutPage = async () => {
   const aboutPage = await getAboutPage();
@@ -44,50 +44,12 @@ const AboutPage = async () => {
         <h1 className="text-4xl tracking-tighter mb-8 uppercase">{aboutPage.title}</h1>
         {aboutPage.pageBuilder.map((block, index) => {
           switch (block._type) {
-            
             case 'textWithIllustration':
               return (
                 <div key={index} className="mb-8">
                   <p>
                     {block.excerpt}
                   </p>
-                </div>
-              );
-            case 'hero':
-              return (
-                <div key={index} className="mb-8">
-                  <h2 className="text-2xl">{block.title}</h2>
-                  <p>{block.subtitle}</p>
-                </div>
-              );
-            case 'gallery':
-              return (
-                <div key={index} className="mb-8">
-                  {block.images.map((image) => (
-                    <Image
-                      key={image.asset._id}
-                      src={image.asset.url}
-                      alt="Gallery image"
-                      width={300}
-                      height={200}
-                      className="object-cover"
-                    />
-                  ))}
-                </div>
-              );
-            case 'form':
-              return (
-                <div key={index} className="mb-8">
-                  {/* Vous pouvez rendre un formulaire ici */}
-                  <p>Formulaire: {block.formId}</p>
-                </div>
-              );
-            case 'video':
-              return (
-                <div key={index} className="mb-8">
-                  <video controls width="100%">
-                    <source src={block.videoUrl} type="video/mp4" />
-                  </video>
                 </div>
               );
             default:
@@ -102,8 +64,8 @@ const AboutPage = async () => {
           <Image
             src={aboutPage.image1}
             alt={aboutPage.title}
-            layout="fill" // L'image prend tout l'espace disponible
-            objectFit="cover" // Ajuste l'image pour qu'elle couvre toute la zone sans déformation
+            fill
+            style={{ objectFit: "cover" }}
             className="object-cover h-screen w-full"
           />
         )}
