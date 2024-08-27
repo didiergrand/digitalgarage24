@@ -58,6 +58,8 @@ export default async function WorkListPage() {
               <Image
                 src={workImageUrl}
                 alt={work.title}
+                width={715} 
+                height={1024} 
                 className="h-48 p-4 object-contain bg-white rounded-md"
               />
               <div className="">

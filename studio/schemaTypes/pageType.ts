@@ -41,8 +41,15 @@ export const pageType = defineType({
           name: 'video',
           type: 'video',
         }),
-        // etc...
       ],
+    }),
+    defineField({
+      name: 'image1',
+      type: 'image',
+      title: 'Image',
+      options: {
+        hotspot: true, // Permettre le recadrage des images
+      },
     }),
   ],
 })

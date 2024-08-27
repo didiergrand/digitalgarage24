@@ -8,7 +8,7 @@ export const textWithIllustrationType = defineType({
   title: 'Text with Illustration',
   fields: [
     defineField({
-      name: 'heading',
+      name: 'heading', 
       type: 'string',
     }),
     defineField({
