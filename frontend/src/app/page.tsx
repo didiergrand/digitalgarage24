@@ -14,7 +14,7 @@ export default async function IndexPage() {
     <div className="grid lg:grid-cols-2">
       <div className="p-8 pt-48 flex items-center">
         {homepages.map((homepage) => (
-          <div key={homepage._id} className="homepage">
+          <div key={homepage._id} className="homepage h-[550px] lg:h-full">
             <div className="intro"><h2>{homepage?.title1}</h2>
             <ProgressBar value={homepage?.line1} line="line1" /></div><br/>
             <div className="intro"><h2>{homepage?.title2}</h2>
