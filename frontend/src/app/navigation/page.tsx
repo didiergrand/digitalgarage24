@@ -19,6 +19,20 @@ export default async function IndexPage() {
 
   return (
     <div className="grid grid-cols-2">
+
+    {/* Colonne droite pour les images */}
+    <div>
+      {navigations.map((item) => (
+        <Image 
+          key={item._id} 
+          src={item.image} 
+          alt={item.title} 
+          width={715} 
+          height={1024} 
+          className="object-cover h-screen w-full" 
+        />
+      ))}
+    </div>
       {/* Colonne gauche pour les éléments de navigation */}
       <div className="bg-dg-900 p-8 pt-48">
         {navigations.map((navItem) => (
@@ -34,20 +48,6 @@ export default async function IndexPage() {
               </li>
             ))}
           </ul>
-        ))}
-      </div>
-
-      {/* Colonne droite pour les images */}
-      <div>
-        {navigations.map((item) => (
-          <Image 
-            key={item._id} 
-            src={item.image} 
-            alt={item.title} 
-            width={715} 
-            height={1024} 
-            className="object-cover h-screen w-full" 
-          />
         ))}
       </div>
     </div>
