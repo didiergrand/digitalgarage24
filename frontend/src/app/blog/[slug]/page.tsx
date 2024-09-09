@@ -8,23 +8,101 @@ import Link from "next/link";
 import Image from "next/image";
 import {dataset, projectId} from '@/sanity/env'
 
+const builder = imageUrlBuilder({ projectId, dataset })
+
 const blogPost_QUERY = `*[
     _type == "blogPost" &&
     slug.current == $slug
   ][0]{
   ...,
   blogCategory->,
-  blogAuthor->
+  blogAuthor->,
+  pageBuilder[]{
+    _type,
+    ...,
+    asset->
+  }
 }`;
-
-const builder = imageUrlBuilder({ projectId, dataset })
 
 function urlFor(source: SanityImageSource) {
   return builder.image(source)
 }
 
+const ImageComponent = ({value}: {value: any}) => {
+  return (
+    <Image
+      src={urlFor(value).width(800).height(600).url()}
+      alt={value.alt || " "}
+      className="my-8 rounded-lg"
+      width={800}
+      height={600}
+    />
+  );
+};
 
+const TextWithIllustrationComponent = ({ value }: { value: any }) => {
+  return (
+    <div className="my-8">
+      <h2>{value.heading}</h2>
+      <p>{value.tagline}</p>
+      <p>{value.excerpt}</p>
+      {value.image && (
+        <Image
+          src={urlFor(value.image).width(800).height(600).url()}
+          alt={value.heading || ""}
+          width={800}
+          height={600}
+          className="my-4 rounded-lg"
+        />
+      )}
+    </div>
+  );
+};
 
+const GalleryComponent = ({ value }: { value: any }) => {
+  // Implémentez le rendu de la galerie ici
+};
+
+const VideoComponent = ({ value }: { value: any }) => {
+  // Implémentez le rendu de la vidéo ici
+};
+
+const RichTextComponent = ({ value }: { value: any }) => {
+  return (
+    <div className="prose max-w-none">
+      <PortableText value={value.content} />
+    </div>
+  );
+};
+
+const TableComponent = ({ value }: { value: any }) => {
+  return (
+    <table className="table-auto border-collapse border border-gray-400 my-4">
+      <tbody>
+        {value.rows.map((row: any, rowIndex: number) => (
+          <tr key={rowIndex}>
+            {row.cells.map((cell: string, cellIndex: number) => (
+              <td key={cellIndex} className="border border-gray-400 px-4 py-2">
+                {cell}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
+const PortableTextComponents = {
+  types: {
+    image: ImageComponent,
+    textWithIllustration: TextWithIllustrationComponent,
+    gallery: GalleryComponent,
+    video: VideoComponent,
+    richText: RichTextComponent,
+    table: TableComponent,
+  },
+};
 
 export default async function blogPostPage({
   params,
@@ -39,7 +117,7 @@ export default async function blogPostPage({
     title,
     publishedAt,
     mainimage,
-    content,
+    pageBuilder,
     blogCategory,
     blogAuthor,
   } = blogPost;
@@ -48,7 +126,6 @@ export default async function blogPostPage({
       : "https://via.placeholder.com/900x1800";
   const blogPostDate = publishedAt ? new Date(publishedAt).toLocaleDateString() : null;
   const blogPostTime = publishedAt ? new Date(publishedAt).toLocaleTimeString() : null;
-
 
   return (
     <div className="grid mt-48 lg:mt-0 lg:grid-cols-2 lg:order-1">
@@ -87,9 +164,12 @@ export default async function blogPostPage({
                 </dl>
               ) : null}
             </div>
-            {content && content.length > 0 && (
+            {pageBuilder && pageBuilder.length > 0 && (
               <div className="prose max-w-none">
-                <PortableText value={content} />
+                {pageBuilder.map((block, index) => {
+                  const Component = PortableTextComponents.types[block._type];
+                  return Component ? <Component key={index} value={block} /> : null;
+                })}
               </div>
             )}
           </div>
