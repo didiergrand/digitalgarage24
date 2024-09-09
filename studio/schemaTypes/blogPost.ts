@@ -1,4 +1,5 @@
-import {defineField, defineType} from 'sanity'
+import {defineField, defineType, defineArrayMember} from 'sanity'
+import {table} from './table' // Assurez-vous d'importer le type de table
 
 export const blogPost = defineType({
   name: 'blogPost',
@@ -38,11 +39,73 @@ export const blogPost = defineType({
     defineField({
       name: 'content',
       type: 'array',
-      of: [{type: 'block'}],
+      of: [
+        {type: 'block'},
+        {
+          type: 'image',
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative Text',
+            },
+          ],
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
     }),
     defineField({
       name: 'publishedAt',
       type: 'datetime',
+    }),
+    defineField({
+      name: 'pageBuilder',
+      type: 'array',
+      title: 'Page builder',
+      of: [
+        defineArrayMember({
+          name: 'textWithIllustration',
+          type: 'textWithIllustration',
+        }),
+        defineArrayMember({
+          name: 'gallery',
+          type: 'gallery',
+        }),
+        defineArrayMember({
+          name: 'video',
+          type: 'video',
+        }),
+        defineArrayMember({
+          type: 'image',
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative Text',
+            },
+          ],
+          options: {
+            hotspot: true,
+          },
+        }),
+        defineArrayMember({
+          name: 'richText',
+          type: 'object',
+          title: 'Rich Text',
+          fields: [
+            {
+              name: 'content',
+              type: 'array',
+              of: [{type: 'block'}]
+            }
+          ]
+        }),
+        defineArrayMember({
+          type: 'table'
+        }),
+      ],
     }),
   ],
 })
