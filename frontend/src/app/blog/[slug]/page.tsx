@@ -7,6 +7,7 @@ import { client, sanityFetch } from "@/sanity/client";
 import Link from "next/link";
 import Image from "next/image";
 import {dataset, projectId} from '@/sanity/env'
+import { ReactElement } from 'react';
 
 const builder = imageUrlBuilder({ projectId, dataset })
 
@@ -93,7 +94,9 @@ const TableComponent = ({ value }: { value: any }) => {
   );
 };
 
-const PortableTextComponents = {
+type ComponentType = ({ value }: { value: any }) => ReactElement | null;
+
+const PortableTextComponents: { types: { [key: string]: ComponentType } } = {
   types: {
     image: ImageComponent,
     textWithIllustration: TextWithIllustrationComponent,
@@ -104,7 +107,6 @@ const PortableTextComponents = {
   },
 };
 
-// Ajoutez ces types en haut du fichier
 type BlockType = {
   _type: keyof typeof PortableTextComponents['types'];
   [key: string]: any;
@@ -182,7 +184,7 @@ export default async function blogPostPage({
             {pageBuilder && pageBuilder.length > 0 && (
               <div className="prose max-w-none">
                 {pageBuilder.map((block: BlockType, index: number) => {
-                  const Component = PortableTextComponents.types[block._type];
+                  const Component = PortableTextComponents.types[block._type] as ComponentType;
                   return Component ? <Component key={index} value={block} /> : null;
                 })}
               </div>
