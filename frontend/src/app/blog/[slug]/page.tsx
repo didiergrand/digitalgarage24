@@ -104,12 +104,27 @@ const PortableTextComponents = {
   },
 };
 
+// Ajoutez ces types en haut du fichier
+type BlockType = {
+  _type: keyof typeof PortableTextComponents['types'];
+  [key: string]: any;
+};
+
+type BlogPost = SanityDocument & {
+  title?: string;
+  publishedAt?: string;
+  mainimage?: SanityImageSource;
+  pageBuilder?: BlockType[];
+  blogCategory?: { name: string };
+  blogAuthor?: { name: string };
+};
+
 export default async function blogPostPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const blogPost = await sanityFetch<SanityDocument>({
+  const blogPost = await sanityFetch<BlogPost>({
     query: blogPost_QUERY,
     params,
   });
@@ -166,7 +181,7 @@ export default async function blogPostPage({
             </div>
             {pageBuilder && pageBuilder.length > 0 && (
               <div className="prose max-w-none">
-                {pageBuilder.map((block, index) => {
+                {pageBuilder.map((block: BlockType, index: number) => {
                   const Component = PortableTextComponents.types[block._type];
                   return Component ? <Component key={index} value={block} /> : null;
                 })}
