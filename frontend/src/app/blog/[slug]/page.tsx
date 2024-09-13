@@ -21,22 +21,33 @@ const blogPost_QUERY = `*[
   pageBuilder[]{
     _type,
     ...,
-    asset->
+    asset{
+      ...,
+      metadata
+    }
   }
 }`;
 
 function urlFor(source: SanityImageSource) {
-  return builder.image(source)
+  return source ? builder.image(source) : null;
 }
 
 const ImageComponent = ({value}: {value: any}): ReactElement => {
+  // Vérifiez si value est un objet d'image valide ou s'il contient une propriété image
+  const imageSource = value.asset ? value : value.image;
+
+  if (!imageSource) {
+    console.error('Invalid image data:', value);
+    return null; // ou retournez un composant de fallback
+  }
+
   return (
     <Image
-      src={urlFor(value).width(800).height(600).url()}
-      alt={value.alt || " "}
-      className="my-8 rounded-lg"
-      width={800}
-      height={600}
+      src={urlFor(imageSource).url()}
+      alt={value.alt || value.heading || ""}
+      width={imageSource.metadata?.dimensions?.width || 1600}
+      height={imageSource.metadata?.dimensions?.height || 1200}
+      className="my-4 rounded-lg w-full h-auto max-h-[1600px] w-auto m-auto"
     />
   );
 };
@@ -49,7 +60,7 @@ const TextWithIllustrationComponent = ({ value }: { value: any }): ReactElement 
       <p>{value.excerpt}</p>
       {value.image && (
         <Image
-          src={urlFor(value.image).width(800).height(600).url()}
+          src={urlFor(value.image).url()}
           alt={value.heading || ""}
           width={800}
           height={600}
@@ -61,15 +72,13 @@ const TextWithIllustrationComponent = ({ value }: { value: any }): ReactElement 
 };
 
 const GalleryComponent = ({ value }: { value: any }): ReactElement | null => {
-  // Pour l'instant, retournons null
+  // Implémentez le rendu de la galerie ici
   return null;
-  // TODO: Implémentez le rendu de la galerie ici
 };
 
 const VideoComponent = ({ value }: { value: any }): ReactElement | null => {
-  // Pour l'instant, retournons null
+  // Implémentez le rendu de la vidéo ici
   return null;
-  // TODO: Implémentez le rendu de la vidéo ici
 };
 
 const RichTextComponent = ({ value }: { value: any }): ReactElement => {
@@ -82,7 +91,7 @@ const RichTextComponent = ({ value }: { value: any }): ReactElement => {
 
 const TableComponent = ({ value }: { value: any }): ReactElement => {
   return (
-    <table className="table-auto border-collapse border border-gray-400 my-4">
+    <table className="table-auto border-collapse border border-gray-400 my-4 w-full">
       <tbody>
         {value.rows.map((row: any, rowIndex: number) => (
           <tr key={rowIndex}>
@@ -143,8 +152,8 @@ export default async function blogPostPage({
     blogAuthor,
   } = blogPost;
   const blogPostImageUrl: string = mainimage
-      ? urlFor(mainimage)?.url() ?? "https://via.placeholder.com/900x1800"
-      : "https://via.placeholder.com/900x1800";
+    ? urlFor(mainimage).url() ?? "https://via.placeholder.com/900x1800"
+    : "https://via.placeholder.com/900x1800";
   const blogPostDate = publishedAt ? new Date(publishedAt).toLocaleDateString() : null;
   const blogPostTime = publishedAt ? new Date(publishedAt).toLocaleTimeString() : null;
 
@@ -198,13 +207,13 @@ export default async function blogPostPage({
       </div>
       <div className="lg:h-full rounded-md m-8 lg:m-0 bg-dg-900 overflow-hidden order-1 lg:order-2">
         <div className="lg:fixed flex justify-center items-center ">
-      <Image
-          src={blogPostImageUrl || "https://via.placeholder.com/900x1800"}
-          alt={title || "blogPost"}
-          className="object-cover lg:h-screen w-1/2 lg:w-full"
-          height="600"
-          width="1200"
-        />
+          <Image
+            src={blogPostImageUrl || "https://via.placeholder.com/900x1800"}
+            alt={title || "blogPost"}
+            className="object-cover lg:h-screen w-1/2 lg:w-full"
+            height={600}
+            width={1200}
+          />
         </div>
       </div>
     </div>

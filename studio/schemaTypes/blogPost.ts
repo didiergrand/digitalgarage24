@@ -49,6 +49,20 @@ export const blogPost = defineType({
               type: 'string',
               title: 'Alternative Text',
             },
+            {
+              name: 'metadata',
+              type: 'object',
+              fields: [
+                {
+                  name: 'dimensions',
+                  type: 'object',
+                  fields: [
+                    { name: 'width', type: 'number' },
+                    { name: 'height', type: 'number' },
+                  ],
+                },
+              ],
+            },
           ],
           options: {
             hotspot: true,
@@ -84,6 +98,20 @@ export const blogPost = defineType({
               name: 'alt',
               type: 'string',
               title: 'Alternative Text',
+            },
+            {
+              name: 'metadata',
+              type: 'object',
+              fields: [
+                {
+                  name: 'dimensions',
+                  type: 'object',
+                  fields: [
+                    { name: 'width', type: 'number' },
+                    { name: 'height', type: 'number' },
+                  ],
+                },
+              ],
             },
           ],
           options: {
