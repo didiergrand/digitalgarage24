@@ -28,7 +28,7 @@ const blogPost_QUERY = `*[
   }
 }`;
 
-function urlFor(source: SanityImageSource) {
+function urlFor(source: SanityImageSource | null | undefined) {
   return source ? builder.image(source) : null;
 }
 
@@ -38,12 +38,19 @@ const ImageComponent = ({value}: {value: any}): ReactElement => {
 
   if (!imageSource) {
     console.error('Invalid image data:', value);
-    return null; // ou retournez un composant de fallback
+    // Retournons un élément div vide au lieu de null
+    return <div className="my-4 rounded-lg w-full h-auto"></div>;
+  }
+
+  const imageUrl = urlFor(imageSource)?.url();
+  if (!imageUrl) {
+    console.error('Unable to resolve image URL');
+    return <div className="my-4 rounded-lg w-full h-auto"></div>;
   }
 
   return (
     <Image
-      src={urlFor(imageSource).url()}
+      src={imageUrl}
       alt={value.alt || value.heading || ""}
       width={imageSource.metadata?.dimensions?.width || 1600}
       height={imageSource.metadata?.dimensions?.height || 1200}
@@ -53,14 +60,16 @@ const ImageComponent = ({value}: {value: any}): ReactElement => {
 };
 
 const TextWithIllustrationComponent = ({ value }: { value: any }): ReactElement => {
+  const imageUrl = value.image ? urlFor(value.image)?.url() : null;
+
   return (
     <div className="my-8">
       <h2>{value.heading}</h2>
       <p>{value.tagline}</p>
       <p>{value.excerpt}</p>
-      {value.image && (
+      {imageUrl && (
         <Image
-          src={urlFor(value.image).url()}
+          src={imageUrl}
           alt={value.heading || ""}
           width={800}
           height={600}
@@ -152,7 +161,7 @@ export default async function blogPostPage({
     blogAuthor,
   } = blogPost;
   const blogPostImageUrl: string = mainimage
-    ? urlFor(mainimage).url() ?? "https://via.placeholder.com/900x1800"
+    ? urlFor(mainimage)?.url() || "https://via.placeholder.com/900x1800"
     : "https://via.placeholder.com/900x1800";
   const blogPostDate = publishedAt ? new Date(publishedAt).toLocaleDateString() : null;
   const blogPostTime = publishedAt ? new Date(publishedAt).toLocaleTimeString() : null;
