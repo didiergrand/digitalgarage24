@@ -29,7 +29,7 @@ function urlFor(source: SanityImageSource) {
   return builder.image(source)
 }
 
-const ImageComponent = ({value}: {value: any}) => {
+const ImageComponent = ({value}: {value: any}): ReactElement => {
   return (
     <Image
       src={urlFor(value).width(800).height(600).url()}
@@ -41,7 +41,7 @@ const ImageComponent = ({value}: {value: any}) => {
   );
 };
 
-const TextWithIllustrationComponent = ({ value }: { value: any }) => {
+const TextWithIllustrationComponent = ({ value }: { value: any }): ReactElement => {
   return (
     <div className="my-8">
       <h2>{value.heading}</h2>
@@ -60,15 +60,19 @@ const TextWithIllustrationComponent = ({ value }: { value: any }) => {
   );
 };
 
-const GalleryComponent = ({ value }: { value: any }) => {
-  // Implémentez le rendu de la galerie ici
+const GalleryComponent = ({ value }: { value: any }): ReactElement | null => {
+  // Pour l'instant, retournons null
+  return null;
+  // TODO: Implémentez le rendu de la galerie ici
 };
 
-const VideoComponent = ({ value }: { value: any }) => {
-  // Implémentez le rendu de la vidéo ici
+const VideoComponent = ({ value }: { value: any }): ReactElement | null => {
+  // Pour l'instant, retournons null
+  return null;
+  // TODO: Implémentez le rendu de la vidéo ici
 };
 
-const RichTextComponent = ({ value }: { value: any }) => {
+const RichTextComponent = ({ value }: { value: any }): ReactElement => {
   return (
     <div className="prose max-w-none">
       <PortableText value={value.content} />
@@ -76,7 +80,7 @@ const RichTextComponent = ({ value }: { value: any }) => {
   );
 };
 
-const TableComponent = ({ value }: { value: any }) => {
+const TableComponent = ({ value }: { value: any }): ReactElement => {
   return (
     <table className="table-auto border-collapse border border-gray-400 my-4">
       <tbody>
