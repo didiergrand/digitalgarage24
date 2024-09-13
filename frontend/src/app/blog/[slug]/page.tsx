@@ -167,8 +167,18 @@ export default async function blogPostPage({
   const blogPostTime = publishedAt ? new Date(publishedAt).toLocaleTimeString() : null;
 
   return (
-    <div className="grid mt-48 lg:mt-0 lg:grid-cols-2 lg:order-1">
-      <div className="p-8 lg:pt-48 order-2">
+    <div className=" lg:mt-0">
+
+<div className="mt-48 rounded-md bg-dg-900 overflow-hidden h-96 max-w-6xl m-auto flex justify-center items-center relative">
+          <Image
+            src={blogPostImageUrl || "https://via.placeholder.com/900x1800"}
+            alt={title || "blogPost"}
+            className="h-[120%] w-auto absolute"
+            height={600}
+            width={1200}
+          />
+        </div>
+      <div className="p-8 max-w-4xl m-auto">
         <div className="mb-4">
           <Link href="/blog">← Back to blog</Link>
         </div>
@@ -212,17 +222,6 @@ export default async function blogPostPage({
               </div>
             )}
           </div>
-        </div>
-      </div>
-      <div className="lg:h-full rounded-md m-8 lg:m-0 bg-dg-900 overflow-hidden order-1 lg:order-2">
-        <div className="lg:fixed flex justify-center items-center ">
-          <Image
-            src={blogPostImageUrl || "https://via.placeholder.com/900x1800"}
-            alt={title || "blogPost"}
-            className="object-cover lg:h-screen w-1/2 lg:w-full"
-            height={600}
-            width={1200}
-          />
         </div>
       </div>
     </div>
