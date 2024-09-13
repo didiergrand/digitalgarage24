@@ -54,7 +54,7 @@ const ImageComponent = ({value}: {value: any}): ReactElement => {
       alt={value.alt || value.heading || ""}
       width={imageSource.metadata?.dimensions?.width || 1600}
       height={imageSource.metadata?.dimensions?.height || 1200}
-      className="my-4 rounded-lg w-full h-auto max-h-[1600px] w-auto m-auto"
+      className="my-4 rounded-lg h-auto max-h-[1600px] w-auto m-auto"
     />
   );
 };
