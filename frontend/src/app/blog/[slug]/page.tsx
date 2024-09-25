@@ -163,8 +163,7 @@ export default async function blogPostPage({
   const blogPostImageUrl: string = mainimage
     ? urlFor(mainimage)?.url() || "https://via.placeholder.com/900x1800"
     : "https://via.placeholder.com/900x1800";
-  const blogPostDate = publishedAt ? new Date(publishedAt).toLocaleDateString() : null;
-  const blogPostTime = publishedAt ? new Date(publishedAt).toLocaleTimeString() : null;
+  const blogPostDate = publishedAt ? new Date(publishedAt).toLocaleDateString('fr-FR') : null;
 
   return (
     <div className=" lg:mt-0">
@@ -180,7 +179,7 @@ export default async function blogPostPage({
         </div>
       <div className="p-8 max-w-4xl m-auto">
         <div className="mb-4">
-          <Link href="/blog">← Back to blog</Link>
+          <Link href="/blog">← Retour au blog</Link>
         </div>
         <div className="grid items-top gap-12 pr-16">
           <div className="flex flex-col justify-center space-y-4">
@@ -199,7 +198,6 @@ export default async function blogPostPage({
                 <dd className="">Date</dd>
                 <div>
                   {blogPostDate && <dt>{blogPostDate}</dt>}
-                  {blogPostTime && <dt>{blogPostTime}</dt>}
                 </div>
               </dl>
               {blogAuthor?.name ? (
