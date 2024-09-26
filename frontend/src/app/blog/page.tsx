@@ -8,7 +8,7 @@ import Image from "next/image";
 import {dataset, projectId} from '@/sanity/env'
 import BlogList from "@/app/components/BlogList";
 
-const blogs_QUERY = `*[_type == "blogPost"]| order(publishedAt desc){
+const blogs_QUERY = `*[_type == "blogPost" && blogCategory->name != "Photo"]| order(publishedAt desc){
   _id,
   title,
   slug,
