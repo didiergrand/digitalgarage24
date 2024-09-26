@@ -88,9 +88,9 @@ const GalleryComponent = ({ value }: { value: any }): ReactElement | null => {
         <Image
           key={index}
           src={urlFor(image)?.url() || ""}
-          alt={image.alt || ""}
-          width={image.metadata?.dimensions?.width || 800}
-          height={image.metadata?.dimensions?.height || 600}
+          alt={(image as { alt?: string }).alt || ""}
+          width={(image as { metadata?: { dimensions?: { width?: number } } }).metadata?.dimensions?.width || 800}
+          height={(image as { metadata?: { dimensions?: { height?: number } } }).metadata?.dimensions?.height || 600}
           className="my-4 rounded-lg"
         />
       ))}
