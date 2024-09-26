@@ -41,8 +41,6 @@ export default async function WorkListPage() {
     query: categories_QUERY,
   });
 
-  console.log(categories); // Affiche les catégories dans la console
-
   const type = "gallery"; // Define the gallery variable
 
   return (

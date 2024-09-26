@@ -165,6 +165,12 @@ export default async function blogPostPage({
     query: blogPost_QUERY,
     params,
   });
+  
+  if (!blogPost) {
+    console.error('Blog post not found');
+    return <div>Blog post not found</div>; // Ou redirigez vers une autre page
+  }
+
   const {
     title,
     publishedAt,
