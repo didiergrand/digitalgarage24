@@ -11,7 +11,6 @@ import BlogList from "./components/BlogList";
 // Requête pour la page d'accueil
 const homepage_QUERY = `*[_type == "homepage"]{_id, title1, title2, title3, line1, line2, line3, slogan1, slogan2, slogan3, "image": image1.asset->url}`;
 
-
 const blogs_QUERY = `*[_type == "blogPost" && blogCategory->name != "Photo"]| order(publishedAt desc){
   _id,
   title,
