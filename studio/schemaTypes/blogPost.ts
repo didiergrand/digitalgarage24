@@ -1,5 +1,7 @@
 import {defineField, defineType, defineArrayMember} from 'sanity'
 import {table} from './table' // Assurez-vous d'importer le type de table
+// Importez le plugin code-input
+import {codeInput} from '@sanity/code-input'
 
 export const blogPost = defineType({
   name: 'blogPost',
@@ -133,7 +135,27 @@ export const blogPost = defineType({
         defineArrayMember({
           type: 'table'
         }),
+        defineArrayMember({
+          name: 'codeBlock',
+          type: 'code',
+          title: 'Code Block',
+          options: {
+            language: 'javascript',
+            languageAlternatives: [
+              {title: 'JavaScript', value: 'javascript'},
+              {title: 'HTML', value: 'html'},
+              {title: 'CSS', value: 'css'},
+              {title: 'TypeScript', value: 'typescript'},
+              {title: 'Python', value: 'python'},
+              // Ajoutez d'autres langages selon vos besoins
+            ],
+            withFilename: true,
+          },
+        }),
       ],
     }),
+  ],
+  plugins: [
+    codeInput(),
   ],
 })
