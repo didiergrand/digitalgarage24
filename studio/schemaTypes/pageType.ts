@@ -21,12 +21,6 @@ export const pageType = defineType({
       type: 'array',
       title: 'Page builder',
       of: [
-        defineArrayMember(
-          {
-            name: 'codeContent',
-            type: 'codeContent',
-          }
-        ),
         defineArrayMember({
           name: 'hero',
           type: 'hero',
