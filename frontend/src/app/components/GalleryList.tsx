@@ -36,7 +36,7 @@ export default function GalleryList({ galleries }: GalleryListProps) {
               />
               <div className="">
                 <h2 className="text-2xl mb-2">{gallery.title}</h2>
-                Lire plus
+                Voir la galerie
               </div>
             </Link>
           </div>

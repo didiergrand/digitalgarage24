@@ -35,7 +35,7 @@ export default function BlogList({ blogs }: BlogListProps) {
               />
               <div className="">
                 <h2 className="text-2xl mb-2">{blog.title}</h2>
-                Lire plus
+                En savoir plus
               </div>
             </Link>
           </div>

@@ -23,7 +23,7 @@ h3{
     padding-top: 10px;
     padding-bottom: 10px;
 }
-p{
+p, ul, ol{
     font-size: 18px;
     line-height: 1.5;
     margin-bottom: 20px;
