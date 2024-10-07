@@ -8,6 +8,9 @@ import Link from "next/link";
 import Image from "next/image";
 import {dataset, projectId} from '@/sanity/env'
 import { ReactElement } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { useEffect } from 'react';
 
 const builder = imageUrlBuilder({ projectId, dataset })
 
@@ -24,7 +27,11 @@ const blogPost_QUERY = `*[
     asset{
       ...,
       metadata
-    }
+    },
+    // Pour les blocs de code
+    language,
+    code,
+    filename
   }
 }`;
 
@@ -116,6 +123,24 @@ const TableComponent = ({ value }: { value: any }): ReactElement => {
   );
 };
 
+const CodeComponent = ({ value }: { value: any }): ReactElement => {
+  return (
+    <div className="my-4">
+      {value.filename && <p className="text-sm text-gray-500 mb-2">{value.filename}</p>}
+      <SyntaxHighlighter 
+        language={value.language || 'javascript'} 
+        style={tomorrow}
+        customStyle={{
+          borderRadius: '0.375rem',
+          padding: '1rem',
+        }}
+      >
+        {value.code || '// No code provided'}
+      </SyntaxHighlighter>
+    </div>
+  );
+};
+
 type ComponentType = ({ value }: { value: any }) => ReactElement | null;
 
 const PortableTextComponents: { types: { [key: string]: ComponentType } } = {
@@ -126,11 +151,12 @@ const PortableTextComponents: { types: { [key: string]: ComponentType } } = {
     video: VideoComponent,
     richText: RichTextComponent,
     table: TableComponent,
+    codeBlock: CodeComponent, 
   },
 };
 
 type BlockType = {
-  _type: keyof typeof PortableTextComponents['types'];
+  _type: 'richText' | 'codeBlock' | 'image' | 'textWithIllustration' | 'gallery' | 'video' | 'table';
   [key: string]: any;
 };
 
@@ -152,6 +178,8 @@ export default async function blogPostPage({
     query: blogPost_QUERY,
     params,
   });
+
+
   const {
     title,
     publishedAt,
