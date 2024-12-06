@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image';
 
-import { SectionWrapper } from '../hoc'
 
 const Portrait = () => {
   return (
@@ -13,4 +12,4 @@ const Portrait = () => {
   )
 }
 
-export default SectionWrapper(Portrait, "portrait")
+export default Portrait;
