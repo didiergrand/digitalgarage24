@@ -44,7 +44,7 @@ export default async function WorkListPage() {
   const type = "gallery"; // Define the gallery variable
 
   return (
-    <div className="p-8 pt-48 container mx-auto">
+    <div className="py-8 pt-48 container mx-auto">
       <h2 className="text-4xl py-4 tracking-tighter">Galeries photo</h2>
       <GalleryList galleries={blogs} />
     </div>

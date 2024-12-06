@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 body{
-    color: #576D55;
-    font-weight: 200;
+    color: #0C0B13;
+    font-weight: 500;
 }
 h1{
-    font-size: 48px;
+    font-size: 100px;
+    font-weight: 900;
     letter-spacing: 2px;
     margin-bottom: 20px;
 }
@@ -28,12 +29,16 @@ p, ul, ol{
     line-height: 1.5;
     margin-bottom: 20px;
 }
+img{
+  max-width: 100%;
+  border-radius: 6px;
+}
 /* My Skills */
 .intro{
     display: inline-block;
 }
 .progress {
-    background-color: #AEBDAC;
+    background-color: #394F7C;
     height: 8px;
     margin-bottom: 20px;
     position: relative;
@@ -47,7 +52,7 @@ p, ul, ol{
     text-align: left;
     transition-duration: 3s;
     height: 8px;
-    background-color: #576D55;
+    background-color: #0C0B13;
     text-align: right;
     width: 0;
 }
@@ -88,7 +93,7 @@ p, ul, ol{
   transform-style: flat;
   text-transform: uppercase;
   font-weight: 900;
-  color: #576D55;
+  color: #0C0B13;
   width: 7px;
   display: block;
   text-align: right;
@@ -99,7 +104,7 @@ p, ul, ol{
 .menu-button::before,
 .menu-button::after {
   display: block;
-  background-color: #AEBDAC;
+  background-color: #394F7C;
   position: absolute;
   height: 8px;
   width: 50px;

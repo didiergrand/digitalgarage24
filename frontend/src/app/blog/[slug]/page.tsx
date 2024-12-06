@@ -196,7 +196,7 @@ export default async function blogPostPage({
   return (
     <div className=" lg:mt-0">
 
-<div className="mt-48 rounded-md bg-dg-900 overflow-hidden h-96 max-w-6xl m-auto flex justify-center items-center relative">
+<div className="mt-48 rounded-md bg-dg-900 overflow-hidden h-96 container m-auto flex justify-center items-center relative">
           <Image
             src={blogPostImageUrl || "https://via.placeholder.com/900x1800"}
             alt={title || "blogPost"}

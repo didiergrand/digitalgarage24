@@ -18,7 +18,7 @@ const Header: React.FC = () => {
 
     return (
         <header className={`absolute w-full z-10 p-8 ${isNavigationPage ? 'active' : ''}`}>
-            <div className="grid grid-cols-2">
+            <div className="grid grid-cols-2 container mx-auto">
                 <div className="flex justify-start">
                     <Link href="/">
                         {isNavigationPage ? (

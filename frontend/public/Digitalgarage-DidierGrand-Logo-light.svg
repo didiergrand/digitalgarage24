@@ -1,4 +1,13 @@
-<svg width="129" height="128" viewBox="0 0 129 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0.90387 121.582C0.90387 125.102 3.76559 127.963 7.28473 127.963H64.7898L0.90387 64.0774V121.582Z" fill="#AEBDAC"/>
-<path d="M64.7899 0.191406H7.28479C3.76565 0.191406 0.903931 3.05312 0.903931 6.57227V64.0773H58.409C61.9282 64.0773 64.7899 66.9391 64.7899 70.4582V127.963C100.059 127.963 128.676 99.3461 128.676 64.0773C128.676 28.8086 100.059 0.191406 64.7899 0.191406Z" fill="#AEBDAC"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 129 128">
+  <!-- Generator: Adobe Illustrator 29.1.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 142)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #a9a7d2;
+      }
+    </style>
+  </defs>
+  <path class="st0" d="M.9,121.6c0,3.5,2.9,6.4,6.4,6.4h57.5L.9,64.1v57.5Z"/>
+  <path class="st0" d="M64.8.2H7.3C3.8.2.9,3.1.9,6.6v57.5h57.5c3.5,0,6.4,2.9,6.4,6.4v57.5c35.3,0,63.9-28.6,63.9-63.9S100.1.2,64.8.2Z"/>
 </svg>

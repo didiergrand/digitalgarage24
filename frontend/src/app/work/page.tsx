@@ -35,7 +35,7 @@ export default async function WorkListPage() {
   });
 
   return (
-    <div className="p-8 pt-48 container mx-auto">
+    <div className="py-8 pt-48 container mx-auto">
 
     {work.map((workItem: any, index: number) => {
           return (
