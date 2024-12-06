@@ -17,7 +17,7 @@ const Hero = () => {
         {/* Right column */}
         <div className='w-full md:w-1/2'>
           {/* Add your content for the right column */}
-          <h1>Hi, I'm <br/><span>Didier Grand</span></h1> 
+          <h1>Hi, I&apos;m <br/><span>Didier Grand</span></h1> 
           <p className='text-2xl'>Frontend Develoer & Team Lead<br></br>Enthusiast of Sports and Innovative Digital Solutions Projects<br></br>Aspiring Digital Project Manager</p>
         </div>
       </div>
