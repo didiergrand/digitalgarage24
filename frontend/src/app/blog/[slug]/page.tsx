@@ -194,7 +194,7 @@ export default async function blogPostPage({
   const blogPostDate = publishedAt ? new Date(publishedAt).toLocaleDateString('fr-FR') : null;
 
   return (
-    <div className=" lg:mt-0">
+    <div className="blog-post lg:mt-0">
 
 <div className="mt-48 rounded-md bg-dg-950 overflow-hidden h-96 container m-auto flex justify-center items-center relative">
           <Image
