@@ -17,19 +17,19 @@ const Preview = () => {
         <div className="grid grid-cols-2 gap-10"> {/* TODO: two cols two rows */}
             <div className="flex flex-col items-center justify-center bg-black rounded-lg text-center p-10">
                 <Image src="/skills-dev.png" alt="Front-end Developer" width={280} height={234} />
-                <h3 className="text-white">Front-end Developer</h3>
+                <h3 className="text-white uppercase">Front-end Developer</h3>
             </div>
             <div className="flex flex-col items-center justify-center bg-black rounded-lg text-center p-10">
                 <Image src="/skills-designer.png" alt="UX/UI Designer" width={280} height={234} />
-                <h3 className="text-white">UX/UI Designer</h3>
+                <h3 className="text-white uppercase">UX/UI Designer</h3>
             </div>
             <div className="flex flex-col items-center justify-center bg-black rounded-lg text-center p-10">
                 <Image src="/skills-project.png" alt="Digital Project Manager" width={280} height={234} />
-                <h3 className="text-white">Digital Project Manager</h3>
+                <h3 className="text-white uppercase">Digital Project Manager</h3>
             </div>
             <div className="flex flex-col items-center justify-center bg-black rounded-lg text-center p-10">
                 <Image src="/skills-photgraphy.png" alt="Photographer" width={280} height={234} />
-                <h3 className="text-white">Photographer</h3>
+                <h3 className="text-white uppercase">Photographer</h3>
             </div>
         </div>
     </div>
