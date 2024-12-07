@@ -1,13 +1,10 @@
 import { SanityDocument } from "next-sanity";
 import { sanityFetch } from "@/sanity/client";
-import ProgressBar from "./components/ProgressBar"; // Adjust the path as necessary
 import RotatingText from "./components/RotatingText"; // Adjust the path as necessary
-import Image from "next/image";
-import Link from "next/link";
 import imageUrlBuilder from "@sanity/image-url";
 import {dataset, projectId} from '@/sanity/env'
-import BlogList from "./components/BlogList";
 import Hero from "./components/Hero";
+import Preview from "./components/Preview";
 
 // Requête pour la page d'accueil
 const homepage_QUERY = `*[_type == "homepage"]{_id, title1, title2, title3, line1, line2, line3, slogan1, slogan2, slogan3, "image": image1.asset->url}`;
@@ -50,13 +47,9 @@ export default async function IndexPage() {
             />
           ))}
         </div>
-
       </div>
+      <Preview />
       {/* Section pour les articles de blog */}
-      <div className="pt-48 mx-auto">
-        <h2 className="text-4xl tracking-tighter">Blog</h2>
-        <BlogList blogs={blogs} />
-      </div>
     </div>
   );
 }

@@ -29,7 +29,7 @@ export default function BlogList({ blogs }: BlogListProps) {
               <Image
                 src={blogImageUrl}
                 alt={blog.title}
-                className="h-48 bg-dg-900 object-contain rounded-md"
+                className="h-48 bg-dg-950 object-contain rounded-md"
                 height="300"
                 width="600"
               />

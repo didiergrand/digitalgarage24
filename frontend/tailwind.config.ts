@@ -11,6 +11,7 @@ const config: Config = {
       transparent: 'transparent',
       current: 'currentColor',
       'white': '#ffffff',
+      'black': '#000000',
       'dg': {
         '50': '#f6f5fa',
         '100': '#ebeaf4',
@@ -20,9 +21,9 @@ const config: Config = {
         '500': '#5a57a0',
         '600': '#484485',
         '700': '#3c386c',
-        '800': '#34315b',
-        '900': '#302d4d',
-        '950': '#0c0b13',
+        '800': '#24214b',
+        '900': '#18142f',
+        '950': '#0e0b1f',
       },
     },
     extend: {

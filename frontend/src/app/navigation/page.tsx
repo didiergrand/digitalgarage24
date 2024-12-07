@@ -38,9 +38,9 @@ export default async function IndexPage() {
         {navigations.map((navItem) => (
           <ul key={navItem._id}>
             {navItem.links.map((link: any) => (
-              <li key={link._id} className="border-b last:border-none border-b-dg-500">
+              <li key={link._id} className="border-b last:border-none border-b-dg-400">
                 <Link 
-                  className="text-3xl flex h-24 text-dg-500 transition-colors ease-in-out duration-300 items-center hover:text-white" 
+                  className="text-3xl flex h-24 text-dg-100 transition-colors ease-in-out duration-300 items-center hover:text-dg-400" 
                   href={link.linkUrl || "#"}
                 >
                   {link.linkName}

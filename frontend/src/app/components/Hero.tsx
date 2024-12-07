@@ -27,8 +27,6 @@ const Hero = () => {
         <Portrait />
       </div>
 
-      {/* Gradient overlay */}
-      <div className='absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-transparent to-black'></div>
     </section>
   ) 
 }

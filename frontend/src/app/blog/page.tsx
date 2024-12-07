@@ -29,7 +29,7 @@ export default async function WorkListPage() {
 
   return (
     <div className="pt-48 container mx-auto">
-      <h2 className="text-4xl py-4 tracking-tighter">Blog</h2>
+      <h2>Blog.</h2>
 
       <BlogList blogs={blogs} />
     </div>

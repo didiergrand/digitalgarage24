@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+
+:root {
+  --dg-50: #f6f5fa;
+  --dg-100: #ebeaf4;
+  --dg-200: #d2d0e7;
+  --dg-300: #a9a7d2;
+  --dg-400: #7a78b8;
+  --dg-500: #5a57a0;
+  --dg-600: #484485;
+  --dg-700: #3c386c;
+  --dg-800: #34315b;
+  --dg-900: #28243f;
+  --dg-950: #1e1b2f;
+}
+
+
+
+
 body{
     color: #0C0B13;
     font-weight: 500;
@@ -13,16 +31,19 @@ h1{
     margin-bottom: 20px;
 }
 h2{
-    font-size: 34px;
+    font-size: 60px;
+    font-weight: 900;
     letter-spacing: 2px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 h3{
     font-size: 24px;
+    font-weight: 900;
     letter-spacing: 2px;
     padding-top: 10px;
     padding-bottom: 10px;
+    text-transform: uppercase;
 }
 p, ul, ol{
     font-size: 18px;
@@ -97,14 +118,14 @@ img{
   width: 7px;
   display: block;
   text-align: right;
-}/*# sourceMappingURL=index.css.map */
+}
 
   
 .menu-button,
 .menu-button::before,
 .menu-button::after {
   display: block;
-  background-color: #394F7C;
+  background-color: var(--dg-400);
   position: absolute;
   height: 8px;
   width: 50px;
