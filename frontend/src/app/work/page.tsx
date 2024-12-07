@@ -39,15 +39,15 @@ export default async function WorkListPage() {
 
     {work.map((workItem: any, index: number) => {
           return (
-            <>
+            <div className="p-8">
               <h2 className="text-4xl py-4 mb-4 tracking-tighter">{workItem.title}</h2>
               <div className="sm:columns-2 gap-8 mb-14">
                 <PortableText value={workItem.content} />
               </div>
-            </>
+            </div>
           )
     })}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 p-8">
         {works.map((work) => {
           const workImageUrl = work.thumbnail
             ? urlFor(work.thumbnail)?.url()

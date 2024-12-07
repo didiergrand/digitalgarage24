@@ -24,7 +24,7 @@ export default function BlogList({ blogs }: BlogListProps) {
           ? urlFor(blog.thumbnail)?.url()
           : "https://via.placeholder.com/600x200";
         return (
-          <div key={blog._id} className="overflow-hidden">
+          <div key={blog._id}>
             <Link href={`/blog/${blog.slug.current}`}>
               <Image
                 src={blogImageUrl}

@@ -29,20 +29,20 @@ const Hero = () => {
     return() => clearInterval(interval);
   }, [charIndex, textIndex, texts]);
   return (
-    <section className='relative top-48 h-screen mx-auto'>
+    <section className='relative top-48 sm:h-screen mx-auto'>
       {/* Desktop: side-by-side columns, Mobile: stacked */}
-      <div className='flex flex-col gap-8 md:flex-row h-full'>
+      <div className='flex flex-col gap-8 sm:flex-row sm:h-full'>
         {/* Left column with Portrait (visible only on desktop) */}
-        <div className='w-full md:w-1/2'>
-          <div className='hidden md:block'>
+        <div className='w-full sm:w-1/2'>
+          <div className='hidden sm:block'>
             <Portrait />
           </div>
         </div>
         
         {/* Right column */}
-        <div className='w-full md:w-1/2'>
+        <div className='w-full sm:w-1/2'>
           {/* Add your content for the right column */}
-          <h1 className='h-8 text-[3rem] font-bold'>
+          <h1 className='h-6 sm:h-8 text-[2rem] sm:text-[3rem] font-bold'>
             {currentText.split('').map((char, index) => (
               <span key={index} className="fade-in-char">
                 {char === ' ' ? '\u00A0' : char}
@@ -55,7 +55,7 @@ const Hero = () => {
       </div>
 
       {/* Portrait below on mobile, hidden on desktop */}
-      <div className='md:hidden'>
+      <div className='sm:hidden'>
         <Portrait />
       </div>
 

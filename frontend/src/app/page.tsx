@@ -34,10 +34,10 @@ export default async function IndexPage() {
   });
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto p-4">
       <Hero />
       <div className="grid lg:grid-cols-2">
-        <div className="pt-48 flex items-center">
+        <div className="pt-48  items-center hidden sm:flex">
           {homepages.map((homepage) => (
             <RotatingText
               key={homepage._id}

@@ -26,7 +26,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body className={inter.className}>
-        <main className="flex min-h-screen flex-col pb-24">
+        <main className="flex min-h-screen flex-col">
           <Header />
             {children}
         </main>

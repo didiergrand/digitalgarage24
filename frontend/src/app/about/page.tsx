@@ -39,9 +39,9 @@ const AboutPage = async () => {
     return <div>Page content not found.</div>;
   }
   return (
-    <div className="grid grid-cols-2 min-h-[100vh]">
+    <div className="grid grid-cols-1 sm:grid-cols-2 min-h-[100vh] container mx-auto pt-48 pb-12">
       {/* Colonne gauche pour le texte et autre contenu */}
-      <div className="p-8 pt-48">
+      <div className="p-8">
         <h1 className="text-4xl tracking-tighter mb-8 uppercase">{aboutPage.title}</h1>
         {aboutPage.pageBuilder.map((block, index) => {
           switch (block._type) {
@@ -60,7 +60,7 @@ const AboutPage = async () => {
       </div>
 
       {/* Colonne droite pour l'image principale */}
-      <div className="relative">
+      <div className="relative hidden sm:block">
         {aboutPage.image1 && (
           <Image
             src={aboutPage.image1}

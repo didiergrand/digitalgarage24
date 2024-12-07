@@ -18,10 +18,10 @@ export default async function IndexPage() {
   const navigations = await sanityFetch<SanityDocument[]>({query: navigation_QUERY});
 
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid sm:grid-cols-2 h-screen">
 
     {/* Colonne droite pour les images */}
-    <div>
+    <div className="hidden sm:block">
       {navigations.map((item) => (
         <Image 
           key={item._id} 
