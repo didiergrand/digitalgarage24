@@ -39,7 +39,7 @@ export default async function WorkListPage() {
 
     {work.map((workItem: any, index: number) => {
           return (
-            <div className="p-8">
+            <div key={workItem._id} className="p-8">
               <h2 className="text-4xl py-4 mb-4 tracking-tighter">{workItem.title}</h2>
               <div className="sm:columns-2 gap-8 mb-14">
                 <PortableText value={workItem.content} />
