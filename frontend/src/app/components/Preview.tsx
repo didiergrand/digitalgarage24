@@ -1,5 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
+import TiltCard from './TiltCard';
+
 const Preview = () => {
   return <div>
     <div className="h-1 bg-dg-950 mb-10"></div>
@@ -15,22 +16,7 @@ const Preview = () => {
             </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10"> {/* TODO: two cols two rows */}
-            <div className="flex flex-col items-center justify-center bg-black rounded-lg text-center p-10 max-w-[60vw] sm:max-w-full">
-                <Image src="/skills-dev.png" alt="Front-end Developer" width={280} height={234} className="max-w-full" />
-                <h3 className="text-white uppercase">Front-end Developer</h3>
-            </div>
-            <div className="flex flex-col items-center justify-center bg-black rounded-lg text-center p-10 max-w-[60vw] sm:max-w-full">
-                <Image src="/skills-designer.png" alt="UX/UI Designer" width={280} height={234} />
-                <h3 className="text-white uppercase">UX/UI Designer</h3>
-            </div>
-            <div className="flex flex-col items-center justify-center bg-black rounded-lg text-center p-10 max-w-[60vw] sm:max-w-full">
-                <Image src="/skills-project.png" alt="Digital Project Manager" width={280} height={234} />
-                <h3 className="text-white uppercase">Digital Project Manager</h3>
-            </div>
-            <div className="flex flex-col items-center justify-center bg-black rounded-lg text-center p-10 max-w-[60vw] sm:max-w-full">
-                <Image src="/skills-photgraphy.png" alt="Photographer" width={280} height={234} />
-                <h3 className="text-white uppercase">Photographer</h3>
-            </div>
+            <TiltCard />
         </div>
     </div>
   </div>;

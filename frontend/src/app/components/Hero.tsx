@@ -26,22 +26,19 @@ const Hero = () => {
       }
     }, 100);
 
-    return() => clearInterval(interval);
+    return () => clearInterval(interval);
   }, [charIndex, textIndex, texts]);
+
   return (
     <section className='relative top-48 sm:h-screen mx-auto'>
-      {/* Desktop: side-by-side columns, Mobile: stacked */}
       <div className='flex flex-col gap-8 sm:flex-row sm:h-full'>
-        {/* Left column with Portrait (visible only on desktop) */}
         <div className='w-full sm:w-1/2'>
           <div className='hidden sm:block'>
             <Portrait />
           </div>
         </div>
         
-        {/* Right column */}
         <div className='w-full sm:w-1/2'>
-          {/* Add your content for the right column */}
           <h1 className='h-6 sm:h-8 text-[2rem] sm:text-[3rem] font-bold'>
             {currentText.split('').map((char, index) => (
               <span key={index} className="fade-in-char">
@@ -50,17 +47,15 @@ const Hero = () => {
             ))}
           </h1>
           <h1>Didier Grand</h1> 
-          <p className='text-2xl font-bold'>Frontend Develoer & Team Lead<br></br>Enthusiast of Sports and Innovative Digital Solutions Projects<br></br>Aspiring Digital Project Manager</p>
+          <p className='text-2xl font-bold'>Frontend Developer & Team Lead<br></br>Enthusiast of Sports and Innovative Digital Solutions Projects<br></br>Aspiring Digital Project Manager</p>
         </div>
       </div>
 
-      {/* Portrait below on mobile, hidden on desktop */}
       <div className='sm:hidden'>
         <Portrait />
       </div>
-
     </section>
-  ) 
-}
+  );
+};
 
-export default Hero
+export default Hero;
