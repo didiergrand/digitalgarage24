@@ -39,15 +39,15 @@ const Hero = () => {
         </div>
         
         <div className='w-full sm:w-1/2'>
-          <h1 className='h-6 sm:h-8 text-[2rem] sm:text-[3rem] font-bold'>
+          <p className='h-6 sm:h-8 text-[2rem] sm:text-[3rem] font-bold'>
             {currentText.split('').map((char, index) => (
               <span key={index} className="fade-in-char">
                 {char === ' ' ? '\u00A0' : char}
               </span>
             ))}
-          </h1>
-          <h1>Didier Grand</h1> 
-          <p className='text-2xl font-bold'>Frontend Developer & Team Lead<br></br>Enthusiast of Sports and Innovative Digital Solutions Projects<br></br>Aspiring Digital Project Manager</p>
+          </p>
+          <p className='h1'>Didier Grand</p> 
+          <h1 className='text-2xl font-bold'>Frontend Developer & Team Lead<br></br>Enthusiast of Sports and Innovative Digital Solutions Projects<br></br>Aspiring Digital Project Manager</h1>
         </div>
       </div>
 

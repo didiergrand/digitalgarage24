@@ -22,14 +22,14 @@ body{
     color: #0C0B13;
     font-weight: 500;
 }
-h1{
+h1, .h1{
   font-size: 50px;
     font-weight: 900;
     letter-spacing: 2px;
     margin-bottom: 20px;
 }
 @media (min-width: 768px) {
-  h1{
+  h1, .h1{
     font-size: 100px;
   }
 }
