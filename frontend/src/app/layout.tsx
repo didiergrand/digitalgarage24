@@ -24,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="canonical" href="https://digitalgarage.ch" />
       </head>
       <body className={inter.className}>
         <main className="flex min-h-screen flex-col">
