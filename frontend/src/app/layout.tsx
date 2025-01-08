@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { headers } from 'next/headers';
 
 const inter = Inter({
   weight: ['200','400','700'],
@@ -20,11 +21,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = headers();
+  const domain = "https://www.digitalgarage.ch";
+  const path = headersList.get("x-invoke-path") || "";
+  const canonicalUrl = `${domain}${path}`;
+
   return (
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="canonical" href="https://digitalgarage.ch" />
+        <link rel="canonical" href={canonicalUrl} />
       </head>
       <body className={inter.className}>
         <main className="flex min-h-screen flex-col">
