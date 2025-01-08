@@ -11,6 +11,7 @@ import { ReactElement } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useEffect } from 'react';
+import { Metadata } from 'next'
 
 const builder = imageUrlBuilder({ projectId, dataset })
 
@@ -19,6 +20,8 @@ const blogPost_QUERY = `*[
     slug.current == $slug
   ][0]{
   ...,
+  excerpt,
+  description,
   blogCategory->,
   blogAuthor->,
   pageBuilder[]{
@@ -167,6 +170,8 @@ type BlogPost = SanityDocument & {
   pageBuilder?: BlockType[];
   blogCategory?: { name: string };
   blogAuthor?: { name: string };
+  excerpt?: string;
+  description?: string;
 };
 
 export default async function blogPostPage({
@@ -252,4 +257,16 @@ export default async function blogPostPage({
       </div>
     </div>
   );
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const blogPost = await sanityFetch<BlogPost>({
+    query: blogPost_QUERY,
+    params,
+  });
+
+  return {
+    title: `${blogPost.title || 'Article'} - Digitalgarage`,
+    description: blogPost.excerpt || blogPost.description || `Article sur ${blogPost.title}`,
+  }
 }

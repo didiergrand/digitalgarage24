@@ -1,6 +1,7 @@
 import { SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { Metadata } from 'next'
 
 import { client, sanityFetch } from "@/sanity/client";
 import Link from "next/link";
@@ -20,6 +21,11 @@ const builder = imageUrlBuilder({ projectId, dataset });
 
 function urlFor(source: SanityImageSource) {
   return builder.image(source);
+}
+
+export const metadata: Metadata = {
+  title: 'Blog - Digitalgarage – Didier Grand',
+  description: 'Découvrez mes articles sur le développement web, le design et la gestion de projet...',
 }
 
 export default async function WorkListPage() {

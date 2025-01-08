@@ -5,6 +5,7 @@ import { client, sanityFetch } from "@/sanity/client";
 import { PortableText } from '@portabletext/react'
 import {dataset, projectId} from '@/sanity/env'
 import Image from "next/image";
+import { Metadata } from 'next'
 
 const work_QUERY = `*[_type == "work"] | order(title asc) {
   _id,
@@ -25,6 +26,10 @@ function urlFor(source: SanityImageSource) {
   return builder.image(source)
 }
 
+export const metadata: Metadata = {
+  title: 'Portfolio - Digitalgarage – Didier Grand',
+  description: 'Découvrez mes projets en développement web, design UI/UX et gestion de projet digital...',
+}
 
 export default async function WorkListPage() {
   const work = await sanityFetch<SanityDocument[]>({

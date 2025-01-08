@@ -5,6 +5,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import {dataset, projectId} from '@/sanity/env'
 import Hero from "./components/Hero";
 import Preview from "./components/Preview";
+import { Metadata } from 'next'
 
 // Requête pour la page d'accueil
 const homepage_QUERY = `*[_type == "homepage"]{_id, title1, title2, title3, line1, line2, line3, slogan1, slogan2, slogan3, "image": image1.asset->url}`;
@@ -22,6 +23,11 @@ const builder = imageUrlBuilder({ projectId, dataset });
 
 function urlFor(source: any) {
   return builder.image(source);
+}
+
+export const metadata: Metadata = {
+  title: 'Digitalgarage – Didier Grand - Création web et stratégie digitale',
+  description: 'Gestion de projets web, développement, UI/UX design, réseaux sociaux...',
 }
 
 export default async function IndexPage() {
