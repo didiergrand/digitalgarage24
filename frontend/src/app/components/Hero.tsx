@@ -47,7 +47,8 @@ const Hero = () => {
             ))}
           </p>
           <p className='h1'>Didier Grand</p> 
-          <h1 className='text-2xl font-bold'>Frontend Developer & Team Lead<br></br>Enthusiast of Sports and Innovative Digital Solutions Projects<br></br>Aspiring Digital Project Manager</h1>
+          <h1 className='text-2xl font-bold'>Digital Project Manager<br></br>UX/UI Expert<br></br>Passionate about Sports & Digital Innovation
+          </h1>
         </div>
       </div>
 
